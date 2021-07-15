@@ -1,16 +1,6 @@
 # action.yml
-name: 'Hello World'
-description: 'Greet someone and record the time'
-inputs:
-  git-2-jss-args:  # id of input
-    description: 'args provided for git2jss'
-    required: true
-    default: '-h'
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+name: 'Git2JSS'
+description: 'Start docker image'
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.git-2-jss-args }}

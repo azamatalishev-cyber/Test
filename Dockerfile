@@ -8,4 +8,4 @@ COPY . .
 
 RUN pip install -r requirements.txt
 
-ENTRYPOINT [ "python", "sync.py" ]
+ENTRYPOINT [ "python", "sync.py", "-h" ]
