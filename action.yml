@@ -8,5 +8,5 @@ inputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  env:
-    TOKEN: ${{ inputs.secret }}
+  args:
+    - ${{ inputs.secret }}
