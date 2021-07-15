@@ -7,5 +7,5 @@ WORKDIR /app
 COPY . .
 
 RUN pip install -r requirements.txt
-
-ENTRYPOINT [ "python", "sync.py", "-h" ]
+RUN chmod +x entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
