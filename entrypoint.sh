@@ -1,3 +1,5 @@
 #!/bin/sh
 
-python sync.py --url $URL --username $USER --password $PASSWORD
+python sync.py --url $URL \
+	       --username $USER \
+               --password $PASSWORD
