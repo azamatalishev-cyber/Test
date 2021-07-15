@@ -7,4 +7,4 @@ WORKDIR /app
 COPY . .
 
 RUN pip install -r requirements.txt
-ENTRYPOINT ./sync.py --url $URL --username $USER --password $PASSWORD
+ENTRYPOINT ./sync.py "--url $URL --username $USER --password $PASSWORD\"
