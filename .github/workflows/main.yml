@@ -12,4 +12,6 @@ jobs:
       - name: Test action step
         uses: ./ # Uses an action in the root directory
         with:
-          secret: ${{ secrets.TEST }}
+          url: ${{ secrets.URL }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
