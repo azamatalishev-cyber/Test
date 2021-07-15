@@ -11,6 +11,5 @@ jobs:
         uses: actions/checkout@v2
       - name: Test action step
         uses: ./ # Uses an action in the root directory
-        env:
-          TOKEN: ${{ secrets.TEST }}    
-          
+        with:
+          secret: ${{ secrets.TEST }}
