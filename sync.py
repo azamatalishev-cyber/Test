@@ -377,15 +377,17 @@ async def main():
     # pylint: disable=global-statement
     global CATEGORIES
     semaphore = asyncio.BoundedSemaphore(args.limit)
+    url = os.environ.get('URL')
+    username = os.environ.get('USER')
     async with aiohttp.ClientSession() as session:
         async with aiohttp.ClientSession(
                 connector=aiohttp.TCPConnector(
                     ssl=args.do_not_verify_ssl)) as session:
             CATEGORIES = await get_existing_categories(
-                session, args.url, args.username, args.password, semaphore)
-            await upload_scripts(session, args.url, args.username,
+                session, url, username, args.password, semaphore)
+            await upload_scripts(session, url, username,
                                  args.password, semaphore)
-            await upload_extension_attributes(session, args.url, args.username,
+            await upload_extension_attributes(session, url, username,
                                               args.password, semaphore)
 
 
@@ -415,7 +417,7 @@ if __name__ == '__main__':
 
     # Ask for password if not supplied via command line args
     if not args.password:
-        args.password = getpass.getpass()
+        args.password = os.environ.get('PASSWORD') 
 
     loop = asyncio.get_event_loop()
 
