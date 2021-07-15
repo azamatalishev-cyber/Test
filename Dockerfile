@@ -7,5 +7,4 @@ WORKDIR /app
 COPY . .
 
 RUN pip install -r requirements.txt
-RUN ["chmod", "+x", "/app/entrypoint.sh"]
 ENTRYPOINT ["./entrypoint.sh"]
