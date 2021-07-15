@@ -1,5 +1,5 @@
 #!/bin/sh
 
-./sync.py --url $URL \
-	       --username $USER \
-               --password $PASSWORD
+./sync.py --url=$URL \
+	       --username=$USER \
+               --password=$PASSWORD
