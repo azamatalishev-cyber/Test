@@ -1,2 +1,2 @@
 #!/bin/sh
-python sync.py $TOKEN
+python sync.py "$TOKEN"
