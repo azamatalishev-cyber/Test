@@ -7,4 +7,4 @@ WORKDIR /app
 COPY . .
 
 RUN pip install -r requirements.txt
-ENTRYPOINT ["./sync.py"]
+ENTRYPOINT ["./sync.py", "$TOKEN"]
