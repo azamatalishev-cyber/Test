@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d9ee548e.chunk.css",
+    "main.js": "/static/js/main.fa04f20b.chunk.js",
+    "main.js.map": "/static/js/main.fa04f20b.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.930ff66c.js",
+    "runtime-main.js.map": "/static/js/runtime-main.930ff66c.js.map",
+    "static/js/2.8705c860.chunk.js": "/static/js/2.8705c860.chunk.js",
+    "static/js/2.8705c860.chunk.js.map": "/static/js/2.8705c860.chunk.js.map",
+    "static/js/3.22af7048.chunk.js": "/static/js/3.22af7048.chunk.js",
+    "static/js/3.22af7048.chunk.js.map": "/static/js/3.22af7048.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.d9ee548e.chunk.css.map": "/static/css/main.d9ee548e.chunk.css.map",
+    "static/js/2.8705c860.chunk.js.LICENSE.txt": "/static/js/2.8705c860.chunk.js.LICENSE.txt",
+    "static/media/Rails.9c1e7835.png": "/static/media/Rails.9c1e7835.png",
+    "static/media/central.ab30cbbe.png": "/static/media/central.ab30cbbe.png",
+    "static/media/css.277aced0.png": "/static/media/css.277aced0.png",
+    "static/media/jQuery.18538072.png": "/static/media/jQuery.18538072.png",
+    "static/media/javascript.0090e88a.png": "/static/media/javascript.0090e88a.png",
+    "static/media/redux.1b4bb5fc.png": "/static/media/redux.1b4bb5fc.png",
+    "static/media/ruby.638d2e0c.png": "/static/media/ruby.638d2e0c.png",
+    "static/media/selfie.00b40e05.JPG": "/static/media/selfie.00b40e05.JPG",
+    "static/media/sqlite.543fc2cd.png": "/static/media/sqlite.543fc2cd.png",
+    "static/media/thrasher-forums.ed57bc80.png": "/static/media/thrasher-forums.ed57bc80.png",
+    "static/media/typing.4dd64a79.gif": "/static/media/typing.4dd64a79.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.930ff66c.js",
+    "static/js/2.8705c860.chunk.js",
+    "static/css/main.d9ee548e.chunk.css",
+    "static/js/main.fa04f20b.chunk.js"
+  ]
+}
