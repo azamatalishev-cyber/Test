@@ -1,0 +1,196 @@
+// Variables
+$darkBackground: #111111;
+$darkColor1: #ffffff99;
+$darkColor2: #ffffffCC;
+$darkColor3: #111111EB;
+$darkColor4: #ffffff4D;
+$darkFont: $darkColor2;
+$darkIcon: $darkColor1;
+$darkLink: $darkColor2;
+$darkMobileNav: $darkColor3;
+$darkMenu: $colorWhite;
+$darkIntroTitle: $colorWhite;
+$darkBlinker: $colorWhite;
+$darkLine: $darkColor4;
+
+$lightBackground: $colorOffWhite;
+$lightColor1: #00000099;
+$lightColor2: #000000BB;
+$lightColor3: #000000B3;
+$lightColor4: #F2F2F2;
+$lightColor5: #0000001A;
+$lightColor6: #00000080;
+$lightFont: $lightColor3;
+$lightIcon: $lightColor1;
+$lightLink: $lightColor2;
+$lightMobileNav: $lightColor4;
+$lightMenu: $colorBlack;
+$lightIntroTitle: $colorBlack;
+$lightBlinker: $colorBlack;
+$lightLine: $lightColor5;
+$lightProjText: $lightColor6;
+$lightAboutText: $lightColor6;
+$lightSkillsText: $lightColor6;
+$lightLabel: $lightColor6;
+
+
+// Dark Mode Stlyes
+.dark {
+  background-color: $darkBackground;
+  color: $darkFont;
+}
+
+.dark-icon {
+  @extend %icon;
+  fill: $darkIcon;
+}
+
+.dark-link {
+  @extend %web-link;
+  color: $darkLink;
+}
+
+.dark-logo {
+  fill: $colorWhite;
+}
+
+.nav-dark {
+  background-color: $darkMobileNav;
+}
+
+.dark-menu {
+  background-color: $darkMenu;
+}
+
+.dark-button {
+  filter: contrast(0);
+}
+
+.dark-title {
+  color: $darkIntroTitle;
+}
+
+.dark-blinker {
+  background-color: $darkBlinker;
+}
+
+.dark-line {
+  background-color: $darkLine;
+}
+
+.dark-border {
+  border-left: $darkLine 1px solid;
+}
+
+.dark-subheader {
+  color: darken($colorWhite, 20%);
+}
+
+.dark-contact-input {
+  color: $colorWhite;
+}
+
+.dark-modal {
+  @extend %modal-container;
+  background: $darkBackground;
+}
+
+@include breakpoint(700px, 625px) {
+  .dark-bg-menu:hover {
+    backdrop-filter: contrast(0.7);
+  }
+}
+
+
+// Light Mode Styles
+.light {
+  background-color: $lightBackground;
+  color: $lightFont;
+}
+
+.light-icon {
+  @extend %icon;
+  fill: $lightIcon;
+}
+
+.light-link {
+  @extend %web-link;
+  color: $lightLink;
+}
+
+.light-logo {
+  fill: $colorBlack;
+}
+
+.nav-light {
+  background-color: $lightMobileNav;
+  color: $lightColor1;
+}
+
+.light-menu {
+  background-color: $lightMenu;
+}
+
+.light-button {
+  filter: opacity(0.75);
+}
+
+.light-title {
+  color: $lightIntroTitle;
+}
+
+.light-blinker {
+  background-color: $lightBlinker;
+}
+
+.light-line {
+  background-color: $lightLine;
+}
+
+.light-proj-text {
+  color: $lightProjText;
+}
+
+.light-about-text {
+  color: $lightAboutText;
+}
+
+.light-border {
+  border-left: $lightLine 1px solid;
+}
+
+.light-subheader {
+  color: lighten($colorBlack, 40%);
+}
+
+.light-skills-text {
+  color: $lightSkillsText;
+}
+
+.light-contact-input {
+  color: $colorBlack;
+}
+
+.light-contact-label {
+  color: $lightLabel;
+}
+
+.light-modal {
+  @extend %modal-container;
+  background: $lightBackground;
+}
+
+@include breakpoint(700px, 625px) { 
+  .light-bg-menu:hover {
+    backdrop-filter: contrast(0.85);
+  }
+}
+
+// both
+
+@include breakpoint(900px) {
+  .dark-border, .light-border {
+    border: none;
+    margin-top: 2rem;
+  }
+}

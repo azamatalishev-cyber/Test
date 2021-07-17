@@ -1,0 +1,17 @@
+@mixin breakpoint($width, $height: 0) {
+  @if $height == 0 {
+    @media only screen and (max-width: $width) {
+      @content
+    }
+  } @else {
+    @media only screen and (max-width: $width), (max-height: $height) {
+      @content
+    }
+  }
+}
+
+@mixin h-breakpoint($height) {
+  @media only screen and (max-height: $height) {
+    @content
+  }
+}
