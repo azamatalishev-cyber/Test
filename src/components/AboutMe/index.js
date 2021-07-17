@@ -14,7 +14,7 @@ const AboutMe = () => {
         <div className="about-text-container">
           <h2 className={`about-title ${aboutTitle}`}>Hello!</h2>
           <p className={`about-text ${aboutText}`}>
-            My name is Azamat Alishev.
+            My name is Azamat.
           </p>
           <p className={`about-text ${aboutText}`}>
             I'm a NYC based Software Engineer and 
