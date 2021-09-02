@@ -13,5 +13,5 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Execute Script
-        run: chmod +x ./akey_version_update.sh
-	run: ./akey_version_update.sh 
+        run: chmod +x akey_version_update.sh
+	run: akey_version_update.sh 
