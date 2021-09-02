@@ -1,0 +1,17 @@
+name: Akeyless Version Update
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  version-check-job:
+    runs-on: ubuntu-latest
+    name: Job
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Execute Script
+        run: chmod +x ./akey_version_update.sh
+	run: ./akey_version_update.sh 
