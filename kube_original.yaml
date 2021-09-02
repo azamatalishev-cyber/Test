@@ -50,4 +50,4 @@ spec:
             {}
           env:
             - name: VERSION
-              value: 2.14.0
+              value: 2.25.0
