@@ -21,3 +21,4 @@ jobs:
             token: ${{ secrets.PAT }}
             commit-message: Update Akeyless Version 
             branch: update-akeyless-version
+            body: Click merge to update manifest to new version of akeyless
