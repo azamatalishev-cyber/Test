@@ -1,9 +1,0 @@
-# Source: akeyless-secrets-injection/templates/webhook-servicaccount.yaml
-apiVersion: v1
-kind: ServiceAccount
-automountServiceAccountToken: true
-metadata:
-  name: akeyless-secrets-injection
-  namespace: akeyless
-  labels:
-    app: akeyless-secrets-injection
