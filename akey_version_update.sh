@@ -9,7 +9,7 @@ latest_tag_version=$(curl https://hub.docker.com/v2/repositories/akeyless/base/t
 current_tag_version=$(grep -oP "(\d+\.+\d+\d+\.+\d)?(\d+\.+\d+\.+\d)" $manifest_path | head -n 1)
 
 
-if [ "$current_version" -ne "$latest_version" || "$current_tag_version" -ne "$latest_tag_version" ]; then
-    sed -e "s/${current_tag_version}/${latest_tag_version}/g" $manifest_path
+if [ "$current_version" != "$latest_version" ] || [ "$current_tag_version" != "$latest_tag_version" ]; then
+    sed -i "s/${current_tag_version}/${latest_tag_version}/g" $manifest_path
     sed -i "s/${current_version}/${latest_version}/g" $manifest_path
 fi
