@@ -1,26 +1,76 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: akeyless-api-gateway
-  namespace: akeyless
+  name: akeyless-gateway
+  namespace: "akeyless-gateway-${ parameters['branch'] }"
+  annotations:
+    strategy.spinnaker.io/max-version-history: "2"
+    ad.datadoghq.com/akeyless-api-proxy-access.logs: '[{"type":"file", "source":"akeyless-gateway","service":"akeyless-gateway","path":"/var/log/akeyless/akeyless-api-proxy-access.log"}]'
+    ad.datadoghq.com/akeyless-api-proxy-error.logs: '[{"type":"file", "source":"akeyless-gateway","service":"akeyless-gateway","path":"/var/log/akeyless/akeyless-api-proxy-error.log"}]'
+    ad.datadoghq.com/akeyless-api-proxy-trace.logs: '[{"type":"file", "source":"akeyless-gateway","service":"akeyless-gateway","path":"/var/log/akeyless/akeyless-api-proxy-trace.log"}]'
+    ad.datadoghq.com/service-bootstrap.logs: '[{"type":"file", "source":"akeyless-gateway","service":"akeyless-gateway","path":"/var/log/akeyless/service-bootstrap.log"}]'
   labels:
-    app.kubernetes.io/name: akeyless-api-gateway
+    app.kubernetes.io/name: akeyless-gateway
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app.kubernetes.io/name: akeyless-api-gateway
-      app.kubernetes.io/instance: akeyless
+      app.kubernetes.io/name: akeyless-gateway
+      app.kubernetes.io/instance: akeyless-gateway
   template:
     metadata:
+      annotations:
+          strategy.spinnaker.io/max-version-history: "2"
+          ad.datadoghq.com/akeyless-api-proxy-access.logs: '[{"type":"file", "source":"akeyless-proxy-access","service":"akeyless-gateway","path":"/var/log/akeyless/akeyless-api-proxy-access.log"}]'
+          ad.datadoghq.com/akeyless-api-proxy-error.logs: '[{"type":"file", "source":"akeyless-proxy-error","service":"akeyless-gateway","path":"/var/log/akeyless/akeyless-api-proxy-error.log"}]'
+          ad.datadoghq.com/akeyless-api-proxy-trace.logs: '[{"type":"file", "source":"akeyless-proxy-trace","service":"akeyless-gateway","path":"/var/log/akeyless/akeyless-api-proxy-trace.log"}]'
+          ad.datadoghq.com/service-bootstrap.logs: '[{"type":"file", "source":"akeyless-service-bootstrap","service":"akeyless-gateway","path":"/var/log/akeyless/service-bootstrap.log"}]'
       labels:
-        app.kubernetes.io/name: akeyless-api-gateway
-        app.kubernetes.io/instance: akeyless
+        app.kubernetes.io/name: akeyless-gateway
+        app.kubernetes.io/instance: akeyless-gateway
     spec:
-      containers:
-        - name: api-gateway
+      nodeSelector:
+        role: akeyless-gateway
+      volumes:
+        - name: gateway-log-volume
+          emptyDir: {}
+        - name: gateway-log-config-map
+          configMap:
+            name: akeyless-gateway-log-config-map
+        - name: gateway-fragment-volume
+          emptyDir: {}
+        - name: gateway-fragment-config-map
+          configMap:
+            name: akeyless-gateway-fragment-config-map
+      initContainers:
+        - name: bootstrap
           image: "akeyless/base:0.3.5"
           imagePullPolicy: IfNotPresent
+          command: ['sh']
+          args:
+            - "-c"
+            - |
+              set -ex
+              [ "$(ls /log_config)" ] && cp /log_config/* /var/akeyless/conf/
+              [ "$(ls /customer_fragments)" ] && cp /customer_fragments/* /root/.akeyless
+          volumeMounts:
+            - name: gateway-log-volume
+              mountPath: /var/akeyless/conf
+            - name: gateway-log-config-map
+              mountPath: /log_config
+            - name: gateway-fragment-volume
+              mountPath: /root/.akeyless
+            - name: gateway-fragment-config-map
+              mountPath: /customer_fragments
+      containers:
+        - name: gateway
+          image: "akeyless/base:0.3.5"
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: gateway-log-volume
+              mountPath: /var/akeyless/conf
+            - name: gateway-fragment-volume
+              mountPath: /root/.akeyless
           ports:
             - containerPort: 18888
               name: web
@@ -49,5 +99,17 @@ spec:
           resources:
             {}
           env:
+            - name: GATEWAY-NAME
+              value: gateway
+            - name: ADMIN_ACCESS_ID
+              valueFrom:
+                  configMapKeyRef:
+                    name: akeyless-gateway-config-map
+                    key: ADMIN_ACCESS_ID
+            - name: ALLOWED_ACCESS_IDS
+              valueFrom:
+                  configMapKeyRef:
+                    name: akeyless-gateway-config-map
+                    key: ALLOWED_ACCESS_IDS
             - name: VERSION
-              value: 2.14.0
+              value: 2.26.1
