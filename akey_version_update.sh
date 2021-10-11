@@ -1,6 +1,6 @@
 #!/bin/bash
 
-manifest_path=kube-manifests/gateway/gateway-deployment.yaml
+manifest_path=gateway-deployment.yaml
 latest_version=$(curl https://changelog.akeyless.io/ | grep -oP "(\d+\.+\d+\d+\.+\d)?(\d+\.+\d+\.+\d)" | head -n 1 )
 current_version=$(grep -oP "(\d+\.+\d+\d+\.+\d)?(\d+\.+\d+\.+\d)" $manifest_path | tail -1 )
 
