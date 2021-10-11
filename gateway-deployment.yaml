@@ -44,7 +44,7 @@ spec:
             name: akeyless-gateway-fragment-config-map
       initContainers:
         - name: bootstrap
-          image: "akeyless/base:0.3.7"
+          image: "akeyless/base:0.3.5"
           imagePullPolicy: IfNotPresent
           command: ['sh']
           args:
@@ -64,7 +64,7 @@ spec:
               mountPath: /customer_fragments
       containers:
         - name: gateway
-          image: "akeyless/base:0.3.7"
+          image: "akeyless/base:0.3.5"
           imagePullPolicy: IfNotPresent
           volumeMounts:
             - name: gateway-log-volume
