@@ -12,8 +12,5 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Set up Golang
-        uses: actions/setup-go@v2
-
       - name: Run Test
         run: make
