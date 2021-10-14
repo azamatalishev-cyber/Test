@@ -12,13 +12,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Execute Script
-        run: bash ./akey_version_update.sh
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
-        with:
-            title: New Akeyless Version available
-            token: ${{ secrets.PAT }}
-            commit-message: Update Akeyless Version 
-            branch: update-akeyless-version
-            body: Click merge to update manifest to new version of akeyless
+      - name: Set up Golang
+        uses: actions/setup-go@v2
+
+      - name: Run Test
+        run: make
